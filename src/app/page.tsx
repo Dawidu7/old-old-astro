@@ -1,4 +1,4 @@
-import { Button, Input, Select } from "~/components"
+import { Button, Input, SearchSelect, Select } from "~/components"
 
 const OPTIONS = [
   { id: 1, name: "David", age: 17 },
@@ -18,7 +18,8 @@ export default function Home() {
       <Input label="Name" name="name" />
       <Input label="Bio" name="bio" type="textarea" />
       <Input label="Age" name="age" type="number" />
-      <Select label="Human" options={OPTIONS} />
+      <Select label="Human" options={OPTIONS} name="human1" />
+      <SearchSelect label="Human" options={OPTIONS} name="human2" />
       <Button>Click me!</Button>
     </div>
   )
