@@ -18,8 +18,8 @@ export type InputPropsProps = {
 }
 
 type InputProps = {
-  className?: string
   label: React.ReactNode
+  className?: string
 } & (
   | ({ type: "number" } & Omit<
       ComponentProps<typeof Number>,

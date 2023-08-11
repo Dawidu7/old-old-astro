@@ -56,7 +56,7 @@ export default forwardRef<HTMLInputElement, NumberProps>(function Number(
         {label}
       </label>
       {errorMessage && (
-        <p className="text-sm text-red-500" {...errorMessageProps}>
+        <p className="text-sm text-red-600" {...errorMessageProps}>
           {errorMessage}
         </p>
       )}
