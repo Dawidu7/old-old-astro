@@ -11,3 +11,5 @@ const connection = connect({
 const db = drizzle(connection, { schema })
 
 export default db
+
+export * from "./schema"

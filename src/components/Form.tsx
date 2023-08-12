@@ -7,22 +7,27 @@ import { twMerge } from "tailwind-merge"
 import { object, string, number, minValue, optional, safeParse } from "valibot"
 import type { ObjectSchema } from "valibot"
 
-type BaseFormData = {
-  [key: string]: string | BaseFormData
+type FormProps = Omit<ComponentProps<"form">, "action"> & {
+  action?: (formData: FormattedFormData) => Promise<void>
+  defaultErrors?: Record<string, string>
 }
 
 export default function Form({
+  action,
   children,
   className,
+  defaultErrors,
   ...props
-}: ComponentProps<"form">) {
-  const [errors, setErrors] = useState<Record<string, string>>({})
+}: FormProps) {
+  const [errors, setErrors] = useState<Record<string, string>>(
+    defaultErrors || {},
+  )
   const { formChildren, schema } = getFormData(children, errors)
 
-  async function action(formData: FormData) {
+  async function preAction(formData: FormData) {
     const formattedFormData = Array.from(
       formData.entries(),
-    ).reduce<BaseFormData>((data, [name, value]) => {
+    ).reduce<FormattedFormData>((data, [name, value]) => {
       if (name.startsWith("$ACTION_ID_")) return data
 
       function getValue() {
@@ -64,14 +69,16 @@ export default function Form({
       return
     }
 
-    console.log("SUCCESS")
-
     setErrors({})
+
+    if (typeof action === "function") {
+      await action(formattedFormData)
+    }
   }
 
   return (
     <form
-      action={action}
+      action={preAction}
       className={twMerge(clsx("flex flex-col gap-4", className))}
       {...props}
     >

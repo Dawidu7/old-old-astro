@@ -9,7 +9,7 @@ export default function RootLayout({ children }: Children) {
   return (
     <html>
       <body className="bg-zinc-800 text-lg text-white">
-        <main>{children}</main>
+        <main className="grid place-items-center">{children}</main>
       </body>
     </html>
   )
