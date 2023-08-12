@@ -17,7 +17,7 @@ export default function Form({
   ...props
 }: ComponentProps<"form">) {
   const [errors, setErrors] = useState<Record<string, string>>({})
-  const { formChildren, schema } = useFormData(children, errors)
+  const { formChildren, schema } = getFormData(children, errors)
 
   async function action(formData: FormData) {
     const formattedFormData = Array.from(
@@ -80,7 +80,7 @@ export default function Form({
   )
 }
 
-function useFormData(
+function getFormData(
   children: React.ReactNode,
   errors: Record<string, string>,
 ): {
@@ -134,7 +134,7 @@ function useFormData(
     }
 
     if (props.role === "group") {
-      const { formChildren, objSchema } = useFormData(props.children, errors)
+      const { formChildren, objSchema } = getFormData(props.children, errors)
 
       schema = {
         ...schema,
