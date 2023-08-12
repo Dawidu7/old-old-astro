@@ -8,5 +8,5 @@ import {
 
 export const admin = mysqlTable("admin", {
   id: serial("id").primaryKey(),
-  password: varchar("password", { length: 60 }),
+  password: varchar("password", { length: 60 }).notNull(),
 })
