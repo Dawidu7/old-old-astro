@@ -1,6 +1,7 @@
 "use client"
 
 import { forwardRef, useRef } from "react"
+import type { ComponentProps } from "react"
 import { mergeProps, useLocale, useNumberField } from "react-aria"
 import type { AriaNumberFieldProps } from "react-aria"
 import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai"
@@ -9,10 +10,12 @@ import { Button } from ".."
 import { InputPropsProps } from "."
 import { mergeRefs } from "~/lib/utils"
 
-type NumberProps = AriaNumberFieldProps & InputPropsProps
+type NumberProps = AriaNumberFieldProps &
+  Pick<ComponentProps<"input">, "name"> &
+  InputPropsProps
 
 export default forwardRef<HTMLInputElement, NumberProps>(function Number(
-  { isFocused, focusWithinProps, labelClass, inputClass, ...props },
+  { isFocused, focusWithinProps, labelClass, inputClass, name, ...props },
   forwardedRef,
 ) {
   const { errorMessage, label } = props
@@ -35,6 +38,7 @@ export default forwardRef<HTMLInputElement, NumberProps>(function Number(
         data-focused={isFocused || undefined}
         ref={mergeRefs(forwardedRef, ref)}
         {...mergeProps(focusWithinProps, inputProps)}
+        name={name}
       />
       <div className="absolute right-0 top-1 flex flex-col">
         <Button

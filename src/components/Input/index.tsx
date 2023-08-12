@@ -20,6 +20,7 @@ export type InputPropsProps = {
 type InputProps = {
   label: React.ReactNode
   className?: string
+  groupstyle?: string
 } & (
   | ({ type: "number" } & Omit<
       ComponentProps<typeof Number>,
@@ -33,7 +34,10 @@ type InputProps = {
 )
 
 export default forwardRef<HTMLInputElement | HTMLTextAreaElement, InputProps>(
-  function Input({ className, type = "text", ...props }, forwardedRef) {
+  function Input(
+    { className, groupstyle, type = "text", ...props },
+    forwardedRef,
+  ) {
     const [isFocused, setFocus] = useState(false)
     const { focusWithinProps } = useFocusWithin({
       onFocusWithinChange: isFocusWithin => setFocus(isFocusWithin),
@@ -62,7 +66,7 @@ export default forwardRef<HTMLInputElement | HTMLTextAreaElement, InputProps>(
       type === "number" ? Number : type === "textarea" ? TextArea : Text
 
     return (
-      <div className="relative z-10 mt-4">
+      <div className={twMerge(clsx("relative z-10 mt-4 w-full", groupstyle))}>
         <Component
           {...props}
           isFocused={isFocused}

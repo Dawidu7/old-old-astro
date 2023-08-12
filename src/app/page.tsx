@@ -1,4 +1,4 @@
-import { Button, Input, SearchSelect, Select } from "~/components"
+import { Button, Form, Group, Input, SearchSelect, Select } from "~/components"
 
 const OPTIONS = [
   { id: 1, name: "David", age: 17 },
@@ -14,13 +14,20 @@ const OPTIONS = [
 
 export default function Home() {
   return (
-    <div>
+    <Form>
       <Input label="Name" name="name" />
       <Input label="Bio" name="bio" type="textarea" />
       <Input label="Age" name="age" type="number" />
+      <Group separator="x">
+        <Input label="Resolution X" name="resolutionX" type="number" />
+        <Group separator="x">
+          <Input label="Resolution Y" name="resolutionY" type="number" />
+          <Input label="Resolution Z" name="resolutionZ" type="number" />
+        </Group>
+      </Group>
       <Select label="Human" options={OPTIONS} name="human1" />
       <SearchSelect label="Human" options={OPTIONS} name="human2" />
-      <Button>Click me!</Button>
-    </div>
+      <Button type="submit">Click me!</Button>
+    </Form>
   )
 }
