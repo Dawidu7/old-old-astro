@@ -1,0 +1,13 @@
+{
+  "version": "5",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1691849426620,
+      "tag": "0000_cool_russian",
+      "breakpoints": true
+    }
+  ]
+}
