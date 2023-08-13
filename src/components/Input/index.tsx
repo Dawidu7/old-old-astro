@@ -75,6 +75,7 @@ export default forwardRef<HTMLInputElement | HTMLTextAreaElement, InputProps>(
           inputClass={inputClass}
           // @ts-expect-error
           ref={forwardedRef}
+          type={type}
         />
       </div>
     )

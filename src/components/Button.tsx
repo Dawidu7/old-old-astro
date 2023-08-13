@@ -11,12 +11,11 @@ import { twMerge } from "tailwind-merge"
 import { mergeRefs } from "~/lib/utils"
 
 const variants = cva(
-  "transition-all h-min outline-none data-[focus-visible]:ring-2",
+  "transition-all h-min outline-none data-[pressed]:scale-95 duration-200 data-[focus-visible]:ring-2",
   {
     variants: {
       plain: {
-        false:
-          "rounded shadow-md shadow-black px-3 py-1.5 data-[pressed]:scale-[.98]",
+        false: "rounded shadow-md shadow-black px-3 py-1.5",
       },
       variant: {
         primary: "bg-indigo-600 ring-white data-[hovered]:bg-indigo-700",
