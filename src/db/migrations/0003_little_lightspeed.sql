@@ -1,0 +1,1 @@
+ALTER TABLE `option` ADD CONSTRAINT `option_name_type` UNIQUE(`name`,`enum`);

@@ -8,6 +8,27 @@
       "when": 1691849426620,
       "tag": "0000_cool_russian",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1692180133767,
+      "tag": "0001_equal_zarda",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1692180896117,
+      "tag": "0002_dark_squadron_supreme",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1692181229608,
+      "tag": "0003_little_lightspeed",
+      "breakpoints": true
     }
   ]
 }
